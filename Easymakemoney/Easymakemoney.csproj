@@ -30,6 +30,15 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\about_us.png" />
+	  <MauiImage Remove="Resources\Images\contact_us.png" />
+	  <MauiImage Remove="Resources\Images\dashboard.png" />
+	  <MauiImage Remove="Resources\Images\team.png" />
+	</ItemGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -50,6 +59,56 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Maui.Dependencies" Version="6.0.553" />
+		<PackageReference Include="Microsoft.Maui.Extensions" Version="6.0.553" />
+		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="System.Runtime.InteropServices.NFloat.Internal" Version="6.0.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Handlers\" />
+	  <None Remove="ViewModels\" />
+	  <None Remove="Views\" />
+	  <None Remove="Views\Dasboard\" />
+	  <None Remove="Views\Startup\" />
+	  <None Remove="ViewModels\Dashboard\" />
+	  <None Remove="ViewModels\Startup\" />
+	  <None Remove="Resources\Images\lock.png" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\user.png" />
+	  <None Remove="Models\" />
+	  <None Remove="Resources\Images\about_us.png" />
+	  <None Remove="Resources\Images\contact_us.png" />
+	  <None Remove="Resources\Images\dashboard.png" />
+	  <None Remove="Resources\Images\team.png" />
+	  <None Remove="Controls\" />
+	  <None Remove="Services\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Handlers\" />
+	  <Folder Include="ViewModels\" />
+	  <Folder Include="Views\" />
+	  <Folder Include="Views\Dasboard\" />
+	  <Folder Include="Views\Startup\" />
+	  <Folder Include="ViewModels\Dashboard\" />
+	  <Folder Include="ViewModels\Startup\" />
+	  <Folder Include="Models\" />
+	  <Folder Include="Controls\" />
+	  <Folder Include="Services\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Resources\Images\lock.png" />
+	  <BundleResource Include="Resources\Images\logo.png" />
+	  <BundleResource Include="Resources\Images\user.png" />
+	  <BundleResource Include="Resources\Images\about_us.png" />
+	  <BundleResource Include="Resources\Images\contact_us.png" />
+	  <BundleResource Include="Resources\Images\dashboard.png" />
+	  <BundleResource Include="Resources\Images\team.png" />
+	  <BundleResource Include="Resources\Images\about_us.png" />
+	  <BundleResource Include="Resources\Images\contact_us.png" />
+	  <BundleResource Include="Resources\Images\dashboard.png" />
+	  <BundleResource Include="Resources\Images\team.png" />
+	</ItemGroup>
 </Project>

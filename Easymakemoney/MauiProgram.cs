@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿
+using Microsoft.Extensions.Logging;
 
 namespace Easymakemoney;
 
@@ -15,8 +16,19 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		builder.Services.AddSingleton<ILoginService, LoginService>();
+
+        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddSingleton<DashboardPage>();
+        builder.Services.AddSingleton<LoadingPage>();
+
+        //View Models
+        builder.Services.AddSingleton<LoginPageViewModel>();
+        builder.Services.AddSingleton<DashboardPageViewModel>();
+        builder.Services.AddSingleton<LoadingPageViewModel>();
+
 #if DEBUG
-		builder.Logging.AddDebug();
+        builder.Logging.AddDebug();
 #endif
 
 		return builder.Build();
