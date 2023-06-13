@@ -55,7 +55,7 @@ namespace Easymakemoney.ViewModels.Startup
                     App.UserDetails = userDetails;
                     AppShell.Current.FlyoutHeader = new FlyoutHeaderControl();
                     await Shell.Current.GoToAsync("//DashboardPage");
-                    await Shell.Current.GoToAsync($"//{nameof(DashboardPage)}");
+                    //await Shell.Current.GoToAsync($"//{nameof(DashboardPage)}");
                 }
                 else
                 {

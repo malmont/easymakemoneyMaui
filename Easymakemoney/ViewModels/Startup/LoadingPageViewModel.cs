@@ -27,12 +27,20 @@ namespace Easymakemoney.ViewModels.Startup
 				var jsonToken = handler.ReadJwtToken(tokenDetails) as JwtSecurityToken;
 
 
-				var userInfo = JsonConvert.DeserializeObject<UserBasicInfo>(userDetaiskStr);
-				App.UserDetails = userInfo;
-				App.Token = tokenDetails;
-				AppShell.Current.FlyoutHeader = new FlyoutHeaderControl();
-                await Shell.Current.GoToAsync("//DashboardPage");
-                //await Shell.Current.GoToAsync($"//{nameof(DashboardPage)}");
+                if (jsonToken.ValidTo < DateTime.Now)
+                {
+                    await Shell.Current.DisplayAlert("User session expired", "Login again to continue", "OK");
+                    await Shell.Current.GoToAsync("//LoginPage");
+                }
+                else
+                {
+                    var userInfo = JsonConvert.DeserializeObject<UserBasicInfo>(userDetaiskStr);
+                    App.UserDetails = userInfo;
+                    App.Token = tokenDetails;
+                    AppShell.Current.FlyoutHeader = new FlyoutHeaderControl();
+                    await Shell.Current.GoToAsync("//DashboardPage");
+                    //await Shell.Current.GoToAsync($"//{nameof(DashboardPage)}");
+                }
             }
 		}
 	}
