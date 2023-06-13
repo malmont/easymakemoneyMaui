@@ -32,6 +32,12 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
+	  <CodesignProvision>iOS Team Provisioning Profile: *</CodesignProvision>
+	  <CodesignKey>Apple Development: Michel Almont (NWYB95UWBB)</CodesignKey>
+	  <CodesignEntitlements>..\..\..\..\esymakemoneyMaui\Easymakemoney\Easymakemoney\Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\about_us.png" />
@@ -65,6 +71,8 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 		<PackageReference Include="System.Runtime.InteropServices.NFloat.Internal" Version="6.0.1" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="2.0.0-preview.61" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -85,6 +93,10 @@
 	  <None Remove="Resources\Images\team.png" />
 	  <None Remove="Controls\" />
 	  <None Remove="Services\" />
+	  <None Remove="Resources\Raw\calculator.json" />
+	  <None Remove="Resources\Raw\collection2.json" />
+	  <None Remove="Resources\Raw\dashboard.json" />
+	  <None Remove="Resources\Raw\settings.json" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Handlers\" />
@@ -110,5 +122,24 @@
 	  <BundleResource Include="Resources\Images\contact_us.png" />
 	  <BundleResource Include="Resources\Images\dashboard.png" />
 	  <BundleResource Include="Resources\Images\team.png" />
+	  <BundleResource Include="Resources\Styles\Colors.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Styles\Styles.xaml">
+	    <SubType>Designer</SubType>
+	    <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+	  </BundleResource>
+	  <BundleResource Include="Resources\Raw\calculator.json" />
+	  <BundleResource Include="Resources\Raw\collection2.json" />
+	  <BundleResource Include="Resources\Raw\dashboard.json" />
+	  <BundleResource Include="Resources\Raw\settings.json" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Remove="Resources\Styles\Colors.xaml" />
+	  <EmbeddedResource Remove="Resources\Styles\Styles.xaml" />
+	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0-maccatalyst'">
+	  <PackageReference Include="Com.Airbnb.iOS.Lottie" Version="2.5.13" />
 	</ItemGroup>
 </Project>
