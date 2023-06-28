@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:dashboard="clr-namespace:Easymakemoney.ViewModels.Dashboard"
+             x:DataType="dashboard:DashboardPageViewModel"
              x:Class="Easymakemoney.Views.Dasboard.DashboardPage"
               
              Title="DashboardPage">
@@ -21,51 +23,7 @@
 
                 <StackLayout Margin="30,0" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-
-
-                    <Frame Margin="0,20,0,0" HasShadow="True" CornerRadius="10"
-                   Padding="2" BackgroundColor="#C4AB4D" HorizontalOptions="FillAndExpand">
-                        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand"  HeightRequest="70">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer  />
-                            </StackLayout.GestureRecognizers>
-                            <Frame BorderColor="#C4AB4D"
-                               Padding="2"
-                       HorizontalOptions="FillAndExpand"
-                      BackgroundColor="White"
-                      CornerRadius="10"
-                    HasShadow="True">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-
-                    <skia:SKLottieView
-                        Source="calculator.json"
-                        Margin="10,0,0,0"
-                       HeightRequest="60"
-                       WidthRequest="60"
-                      HorizontalOptions="StartAndExpand"
-                        RepeatCount="-1">
-                    </skia:SKLottieView>
-
-                 <!--<forms:AnimationView
-                        Margin="10,0,0,0"
-                x:Name="AnimationView1"
-               HeightRequest="80"
-              WidthRequest="80"
-                Animation="calculator.json" 
-                AutoPlay="True" RepeatMode="Infinite"
-            HorizontalOptions="StartAndExpand"
-            Command="{Binding AnimationClickedCommand}"/>-->
-
-                                    <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"  Style="{StaticResource LabelMenu}"
-                  HorizontalTextAlignment="End" FontAttributes="Bold" Text="ITEMS CALCULTOR" Margin="{OnPlatform iOS='0,0,10,0',Android='0,0,20,0',Default=0}"/>
-
-                                </StackLayout>
-                            </Frame>
-                        </StackLayout>
-                    </Frame>
-
-
-                    <Frame Margin="0,20,0,0" HasShadow="True" CornerRadius="10"
+                    <Frame Margin="0,30,0,0" HasShadow="True" CornerRadius="10"
                    Padding="2" BackgroundColor="#C4AB4D" HorizontalOptions="FillAndExpand">
                         <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand"  HeightRequest="70">
                             <StackLayout.GestureRecognizers>
@@ -78,8 +36,38 @@
                       CornerRadius="10"
                     HasShadow="True">
                      <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    
+                         <skia:SKLottieView
+                        Source="calculator.json"
+                        Margin="10,0,0,0"
+                       HeightRequest="60"
+                       WidthRequest="60"
+                      HorizontalOptions="StartAndExpand" 
+                        RepeatCount="-1">
+                    </skia:SKLottieView>
 
-                                
+                  <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"  Style="{StaticResource LabelMenu}"
+                  HorizontalTextAlignment="End" FontAttributes="Bold" Text="ITEMS CALCULTOR" Margin="{OnPlatform iOS='0,0,10,0',Android='0,0,20,0',Default=0}"/>
+
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Margin="0,30,0,0" HasShadow="True" CornerRadius="10"
+                   Padding="2" BackgroundColor="#C4AB4D" HorizontalOptions="FillAndExpand">
+                        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand"  HeightRequest="70">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer  />
+                            </StackLayout.GestureRecognizers>
+                            <Frame BorderColor="#C4AB4D"
+                               Padding="2"
+                       HorizontalOptions="FillAndExpand"
+                      BackgroundColor="White"
+                      CornerRadius="10"
+                    HasShadow="True">
+                     <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+   
                     <skia:SKLottieView
                         Source="collection2.json"
                         Margin="10,0,0,0"
@@ -89,18 +77,7 @@
                         RepeatCount="-1">
                     </skia:SKLottieView>
 
-
-                   <!--<forms:AnimationView
-                        Margin="10,0,0,0"
-                x:Name="AnimationView2"
-               HeightRequest="80"
-              WidthRequest="80"
-                Animation="collection2.json" 
-                AutoPlay="True"  RepeatMode="Infinite"
-            HorizontalOptions="StartAndExpand"
-            Command="{Binding AnimationClickedCommand}"/>-->
-
-                                    <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"  Style="{StaticResource LabelMenu}"
+                 <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"  Style="{StaticResource LabelMenu}"
                   HorizontalTextAlignment="End" FontAttributes="Bold" Text="COLLECTIONS" Margin="{OnPlatform iOS='0,0,10,0',Android='0,0,20,0',Default=0}"/>
 
                                 </StackLayout>
@@ -108,13 +85,11 @@
                         </StackLayout>
                     </Frame>
 
-
-
-                    <Frame Margin="0,20,0,0" HasShadow="True" CornerRadius="10"
+                    <Frame Margin="0,30,0,0" HasShadow="True" CornerRadius="10"
                    Padding="2" BackgroundColor="#C4AB4D" HorizontalOptions="FillAndExpand">
                         <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand"  HeightRequest="70">
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer />
+                                <TapGestureRecognizer Command="{Binding NavigateToAllListsPageCommand}"/>
                             </StackLayout.GestureRecognizers>
                             <Frame BorderColor="#C4AB4D"
                                Padding="2"
@@ -134,18 +109,7 @@
                         RepeatCount="-1">
                     </skia:SKLottieView>
 
-
-                 <!--<forms:AnimationView
-                        Margin="10,0,0,0"
-                x:Name="AnimationView3"
-               HeightRequest="80"
-              WidthRequest="80"
-                Animation="settings.json" 
-                AutoPlay="True"  RepeatMode="Infinite"
-            HorizontalOptions="StartAndExpand"
-           Command="{Binding AnimationClickedCommand}"/>-->
-
-                                    <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"   Style="{StaticResource LabelMenu}"
+                 <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"   Style="{StaticResource LabelMenu}"
                   HorizontalTextAlignment="End" FontAttributes="Bold" Text="GESTIONS" Margin="{OnPlatform iOS='0,0,10,0',Android='0,0,20,0',Default=0}"/>
 
                                 </StackLayout>
@@ -153,7 +117,7 @@
                         </StackLayout>
                     </Frame>
 
-                    <Frame Margin="0,20,0,0" HasShadow="True" CornerRadius="10"
+                    <Frame Margin="0,30,0,0" HasShadow="True" CornerRadius="10"
                    Padding="2" BackgroundColor="#C4AB4D" HorizontalOptions="FillAndExpand">
                         <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand"  HeightRequest="70">
                             <StackLayout.GestureRecognizers>
@@ -177,18 +141,7 @@
                         RepeatCount="-1">
                     </skia:SKLottieView>
 
-
-                                    <!--<forms:AnimationView
-                        Margin="10,0,0,0"
-                x:Name="AnimationView"
-               HeightRequest="80"
-              WidthRequest="80"
-                Animation="dashboard.json" 
-                AutoPlay="True"  RepeatMode="Infinite"
-            HorizontalOptions="StartAndExpand"
-            Command="{Binding AnimationClickedCommand}"/>-->
-
-                                    <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"   Style="{StaticResource LabelMenu}"
+                   <Label VerticalTextAlignment="Center" TextColor="#C4AB4D"   Style="{StaticResource LabelMenu}"
                   HorizontalTextAlignment="End" FontAttributes="Bold" Text="DASHBOARD" Margin="0,0,10,0"/>
 
                                 </StackLayout>

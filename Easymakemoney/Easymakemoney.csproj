@@ -97,6 +97,9 @@
 	  <None Remove="Resources\Raw\collection2.json" />
 	  <None Remove="Resources\Raw\dashboard.json" />
 	  <None Remove="Resources\Raw\settings.json" />
+	  <None Remove="ViewModels\Lists\" />
+	  <None Remove="Views\Lists\" />
+	  <None Remove="RessourceDictionnary\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Handlers\" />
@@ -109,6 +112,9 @@
 	  <Folder Include="Models\" />
 	  <Folder Include="Controls\" />
 	  <Folder Include="Services\" />
+	  <Folder Include="ViewModels\Lists\" />
+	  <Folder Include="Views\Lists\" />
+	  <Folder Include="RessourceDictionnary\" />
 	</ItemGroup>
 	<ItemGroup>
 	  <BundleResource Include="Resources\Images\lock.png" />

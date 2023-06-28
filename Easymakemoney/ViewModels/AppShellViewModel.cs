@@ -4,7 +4,6 @@ namespace Easymakemoney.ViewModels
 	public partial class AppShellViewModel:BaseViewModel
 	{
 		[ICommand]
-
 		async void SignOut()
 		{
             if (Preferences.ContainsKey(nameof(App.UserDetails)))
