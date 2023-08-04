@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:list="clr-namespace:Easymakemoney.ViewModels.Lists"
+             x:DataType="list:ListNewCollectionViewModel"
+              xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+              xmlns:x1="clr-namespace:Easymakemoney.Models"
+             x:Class="Easymakemoney.Views.Lists.ListNewCollectionPage"
+             Title="ListNewCollectionPage">
+    <ContentPage.Content>
+       <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+          <AbsoluteLayout Grid.Row="0" Grid.Column="0">
+        <StackLayout Spacing="0">
+                 <FlexLayout BackgroundColor="#518faa" Direction="Column" >
+                <Image  Margin="0,5,0,0" Source="dollars.png" Aspect="AspectFit"  HeightRequest="180" /> 
+            </FlexLayout >
+              <Image Source="lab_separator.png" Aspect="AspectFill"/>
+            <!--description de la liste-->
+                 <Frame BorderColor="#C4AB4D" Margin="10,5,10,3" WidthRequest="300" 
+                  CornerRadius="10" Padding="1" 
+                  HasShadow="True">
+              <FlexLayout Margin="1,0"  >  
+                  <Label FontSize="{OnPlatform iOS=15}" TextColor="Black"   Text="Thème"  Margin="15,0,10,0" LineBreakMode="TailTruncation" />
+                  <Label FontSize="{OnPlatform iOS=15}" TextColor="Black"   Text="Collection" Margin="20,0,0,0" LineBreakMode="TailTruncation" />
+                  <Label FontSize="{OnPlatform iOS=15}" TextColor="Black"  Text="Num "  Margin="30,0,0,0" LineBreakMode="TailTruncation" />
+                  <Label FontSize="{OnPlatform iOS=15}" TextColor="Black"  Text="Budget"  Margin="10,0,0,0" LineBreakMode="TailTruncation" />
+             </FlexLayout>          
+              </Frame>
+            <!--fin description-->
+            <!--liste de collection-->
+        <ListView  ItemsSource="{Binding ListCollections}" IsPullToRefreshEnabled="true" BackgroundColor="White" 
+                  RowHeight="120" HeightRequest="{OnPlatform iOS=510, Android=460,Default=0}"   > 
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="x1:ListCollection">
+                    <ViewCell>
+                <Frame BorderColor="#C4AB4D" Margin="10,2" WidthRequest="460" 
+                  CornerRadius="10"
+                  HasShadow="True">
+
+                  <Frame HasShadow="True" CornerRadius="10" Padding="1" BackgroundColor="#C4AB4D" WidthRequest="450">   
+                       <FlexLayout Margin="2,2" BackgroundColor="White"  WidthRequest="380" Direction="Row">
+                 <Frame  HasShadow="True" Margin="3,3" Padding="1" CornerRadius="10" BackgroundColor="Gray">
+
+                     <Image Aspect="Fill" Margin="1,1" 
+			                WidthRequest="80" HeightRequest="80"
+			                Source="{Binding photoCollection}"/>
+             
+                  </Frame>
+                   <Label LineBreakMode="TailTruncation"  TextColor="Black" Margin="10,0,20,0" FontSize="Small" Text= "{Binding nomCollection}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                 <Label LineBreakMode="TailTruncation" HorizontalOptions="FillAndExpand"  TextColor="Black" Margin="10,0,20,0" FontSize="Small"    Text="{Binding id}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                  <Label LineBreakMode="TailTruncation"  TextColor="Black" Margin="30,0,5,0" FontSize="Small"   Text="{Binding budgetCollection }" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                   </FlexLayout>
+               </Frame>
+               </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            <!--fin liste collection-->
+            </StackLayout>
+              <!--bouton add liste-->
+             
+              <!--<forms:AnimationView 
+                x:Name="AnimationView"
+                 HeightRequest="56"
+                 WidthRequest="56"
+                Animation="Add1.json" 
+                AutoPlay="True" Loop="true"
+              AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".95,.95,80,60" 
+            ClickedCommand="{Binding AnimationClickedCommand}"/>-->
+              <!--fin bouton add liste-->
+               </AbsoluteLayout>
+               <!--indicateur wait-->
+           <StackLayout BackgroundColor="white" Grid.Row="0" Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" x:Name="stachWait" IsVisible="true">
+               <ActivityIndicator x:Name="activitiWait" IsRunning="True" Color="#518faa">
+               </ActivityIndicator>
+           </StackLayout>
+           <!--fin indicateur wait-->
+              <StackLayout HeightRequest="85" Margin="30,40,30,0" IsVisible="true" x:Name="backs"
+              WidthRequest="105" AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".95,.95,80,10" HorizontalOptions="StartAndExpand"
+            VerticalOptions="End">
+            <!--bouton flottant save et cancel-->
+
+                       <skia:SKLottieView
+                        Source="back.json"
+                        Margin="10,0,0,0"
+                      HeightRequest="105"
+                 WidthRequest="105"
+                      VerticalOptions="End"
+                        RepeatCount="-1">
+                    </skia:SKLottieView>
+             <!--<forms:AnimationView
+                 VerticalOptions="End"
+                x:Name="AnimationView6"
+                 HeightRequest="105"
+                 WidthRequest="105"
+                Animation="back.json" 
+                AutoPlay="True" 
+                 Clicked="AnimationView6_OnClick"
+            
+            />-->
+              </StackLayout>
+
+            <StackLayout HeightRequest="65" Margin="30,0" IsVisible="true" x:Name="add"
+            WidthRequest="65" AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".95,.95,80,60" HorizontalOptions="EndAndExpand"
+             VerticalOptions="End" >
+
+                     <skia:SKLottieView
+                        Source="Add1.json"
+                        Margin="10,0,0,0"
+                        HeightRequest="65"
+                        WidthRequest="65"
+                      HorizontalOptions="StartAndExpand"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"  
+                        AbsoluteLayout.LayoutBounds=".10,.95,80,60" 
+                        RepeatCount="-1">
+                    </skia:SKLottieView>
+             <!--<forms:AnimationView
+                 
+                x:Name="AnimationView7"
+                 HeightRequest="65"
+                 WidthRequest="65"
+                Animation="Add1.json" 
+                AutoPlay="True" 
+              AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".10,.95,80,60" 
+           Command="{Binding AnimationClickedCommand}"/>-->
+                  </StackLayout>
+        
+           </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -8,7 +8,7 @@ namespace Easymakemoney.Services
        
         public async Task<LoginResponse> Authenticate(LoginRequest loginRequest)
         {
-            string loginUrl = "https://backend-strapi.online/api-flutter/api/login";
+            string loginUrl = "https://backend-strapi.online/jeesign/api/login";
             using (var client = new HttpClient())
             {
                 string loginRequestStr = JsonConvert.SerializeObject(loginRequest);

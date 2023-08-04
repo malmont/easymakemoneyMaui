@@ -20,16 +20,19 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddSingleton<ILoginService, LoginService>();
+        builder.Services.AddSingleton<IListCollectionService, ListCollectionService>();
 
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddSingleton<DashboardPage>();
         builder.Services.AddSingleton<LoadingPage>();
         builder.Services.AddSingleton<AllListsPage>();
+        builder.Services.AddSingleton<ListNewCollectionPage>();
         //View Models
         builder.Services.AddSingleton<LoginPageViewModel>();
         builder.Services.AddSingleton<DashboardPageViewModel>();
         builder.Services.AddSingleton<LoadingPageViewModel>();
         builder.Services.AddSingleton<AllListsViewModel>();
+        builder.Services.AddSingleton<ListNewCollectionViewModel>();
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
