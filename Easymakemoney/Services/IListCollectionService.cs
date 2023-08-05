@@ -8,14 +8,15 @@ namespace Easymakemoney.Services
 
         public async Task<ObservableCollection<ListCollection>> GetCollectionList()
         {
-            string getListUrl = "https://backend-strapi.online/jeesign/api/collections";
+            string getListUrl = "https://backend-strapi.online/jeesign/api/collections.json";
             using (var client = new HttpClient())
             {
                 var response = await client.GetAsync(getListUrl);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     var json = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<ObservableCollection<ListCollection>>(json);
+                    var desiarizeJson = JsonConvert.DeserializeObject<ObservableCollection<ListCollection>>(json);
+                    return desiarizeJson;
 
                 }
                 else
